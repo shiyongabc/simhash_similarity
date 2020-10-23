@@ -1,4 +1,4 @@
-package simhash
+package main
 
 import (
 	"github.com/yanyiwu/gojieba"

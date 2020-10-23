@@ -1,8 +1,11 @@
-package simhash
+package main
 
-import "fmt"
+import (
+	"testing"
+	"fmt"
+)
 
-func main() {
+func TestSimHashSimilar(t *testing.T) {
 	g := NewGoJieba()
 	srcStr := RemoveHtml("关于区块链和数字货币的关系，很多人或多或少都存在疑惑。简单来说，区块链是比特币的底层运用，而比特币只是区块链的一个小应用而已。" +
 		"数字货币即虚拟货币，最早的数字货币诞生于2009年，其发明者中本聪为了应对经济危机对于实体货币经济的冲击。比特币是最早的数字货币，后来出现了以太币、火币以及莱特币等虚拟货币，这些虚拟货币是不能用来交易的。" +
@@ -32,9 +35,8 @@ func main() {
 
 	distance, err := SimHashSimilar(srcWords, dstWords)
 	if err != nil {
-		println("failed: %v", err.Error())
+		t.Errorf("failed: %v", err.Error())
 	}
 
-	println("SimHashSimilar distance: %v", distance)
-
+	t.Logf("SimHashSimilar distance: %v", distance)
 }
